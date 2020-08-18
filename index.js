@@ -43,6 +43,19 @@ const developers = ""
 
 
 
+client.on("message", message => {
+if(message.content.startsWith(prefix + "غير اسم")){
+if(message.author.bot  message.channel.type == "dm"  !message.member.hasPermission("MANAGE_NICKNAMES")  !message.guild.member(client.user).hasPermission("MANAGE_NICKNAMES")) return;
+var user = message.mentions.members.first();
+var args = message.content.split(" ").slice(2);
+var nick = args.join(" ");
+if(!user  !args) return message.channel.send(• | Usage: ${prefix}setnick `@Name` nickname);
+message.guild.member(user.user).setNickname(${nick});
+message.channel.send(Successfully changed ${user} nickname to ${nick});
+}
+}); 
+
+
 
 
 
@@ -115,6 +128,8 @@ client.on('message', message => {
 
 
  ❖ ${prefix}ping ➾ Test My Ping
+
+❖ ${prefix}غيراسم➾ 
 
 
  
